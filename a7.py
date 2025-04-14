@@ -63,65 +63,33 @@ class BayesClassifier:
 
 
     def classify(self, text: str) -> str:
-        """Classifies given text as positive, negative or neutral from calculating the
-        most likely document class to which the target string belongs
-
-        Args:
-            text - text to classify
-
-        Returns:
-            classification, either positive, negative or neutral
-        """
-        # TODO: fill me out
-        
-        # get a list of the individual tokens that occur in text
+        """Classifies the given text as positive, negative or neutral."""
         tokens = self.tokenize(text)
-        print(tokens)
-        # create some variables to store the positive and negative probability. since
-        # we will be adding logs of probabilities, the initial values for the positive
-        # and negative probabilities are set to 0
+
+        # Initialize probabilities
         pos_score = 0
         neg_score = 0
 
-        # get the sum of all of the frequencies of the features in each document class
-        # (i.e. how many words occurred in all documents for the given class) - this
-        # will be used in calculating the probability of each document class given each
-        # individual feature
+        # Calculate the sum of word frequencies in both dictionaries
         pos_total = sum(self.pos_freqs.values())
-        # print(pos_total)
         neg_total = sum(self.neg_freqs.values())
-        # print(neg_total)
-        
 
-        # for each token in the text, calculate the probability of it occurring in a
-        # postive document and in a negative document and add the logs of those to the
-        # running sums. when calculating the probabilities, always add 1 to the numerator
-        # of each probability for add one smoothing (so that we never have a probability
-        # of 0)
+        # Calculate log probabilities for each token
         for token in tokens:
-            pos_freqs = self.pos_freqs.get(token, 0) + 1
-            neg_freqs = self.neg_freqs.get(token, 0) + 1
+            pos_freqs = self.pos_freqs.get(token, 0) + 1  # add one smoothing
+            neg_freqs = self.neg_freqs.get(token, 0) + 1  # add one smoothing
 
-            # print(pos_freqs, neg_freqs)
-
-            pos_score += math.log(pos_freqs / (pos_total))
+            pos_score += math.log(pos_freqs / pos_total)
             neg_score += math.log(neg_freqs / neg_total)
 
-            print(pos_score, neg_score)
-
-
-        # for debugging purposes, it may help to print the overall positive and negative
-        # probabilities
-        # print(pos_score, neg_score)
-
-        # determine whether positive or negative was more probable (i.e. which one was
-        # larger)
+        # Compare positive and negative scores
         if pos_score > neg_score:
             return "positive"
-        else:
+        elif neg_score > pos_score:
             return "negative"
+        else:
+            return "neutral"  # In case of a tie
 
-        # return a string of "positive" or "negative"
 
     def load_file(self, filepath: str) -> str:
         """Loads text of given file
