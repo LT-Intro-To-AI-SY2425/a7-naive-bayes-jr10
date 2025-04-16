@@ -1,3 +1,5 @@
+# Jovial Rana and Jayden Rodriguez
+
 import math, os, pickle, re
 from typing import Tuple, List, Dict
 
@@ -81,6 +83,9 @@ class BayesClassifier:
 
             pos_score += math.log(pos_freqs / pos_total)
             neg_score += math.log(neg_freqs / neg_total)
+
+            print(f"Positive Probabilities: {pos_score}")
+            print(f"Negative Probabilities: {neg_score}")
 
         # Compare positive and negative scores
         if pos_score > neg_score:
