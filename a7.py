@@ -230,4 +230,35 @@ if __name__ == "__main__":
     print("\nThe following should all be negative.")
     print(b.classify('rainy days are the worst'))
     print(b.classify('computer science is terrible'))
+
+    print("\nThe following is to test out the method with each groups responses")
+
+    print("\nThe following should all be positive.")
+
+    print(b.classify("Summer break is almost here. I am super excited and I know that it's going to be the best"))
+    print(b.classify('I loved the movie. I ate popcorn and drank soda.'))
+    print(b.classify('Playing soccer is amazing, and I feel very happy to enjoy it.'))
+
+    print("\nThe following should all be negative.")
+    
+    print(b.classify("I am nervous that I won't do well on the AP tests.  I have studied, but I don't think I'll do that well"))
+    print(b.classify("I hate school. I hate climate change"))
+    print(b.classify("I am scared that I will stop the team from winning."))
+
+    print("\nReal world responses.")
+
+    print("\nThe following should all be positive.")
+
+    print(b.classify("This film is good, entertaining and all round fun. Chris Tucker makes it, without him it would just be another thin action film. But his barrier breaking is great to watch and the chemistry between Chan and him are great."))
+    print(b.classify("Wonderful film! Lots of laughs and action. These two have the best chemistry I have seen in a long time. Chris Tucker is hilarious, and Jackie Chan always entertains. This film delivers in every way!! Rent today…"))
+    
+    print("\nThe following should all be negative.")
+
+   
+    print(b.classify("I wonder why people rate this movie so highly, for this isn't a Jacky Chan movie or even a decent action/comedy. It's a Chris Tucker movie and Jacky came along for the ride! And if you know Chris, you know the movie. I think he is an annoying bag of hot air with a faggy voice and Eddie Murphy style humor: I don't like him so I don't like the movie. As for the action in this picture: DON'T FILM ACTION SEQUENCES WITH A HANDHELD: KEEP THE SHOT STATIC (if they didn't, then they've moved the camera too up-close and too much)! Why? Because I couldn't follow the action except from the first scene: that one was quite good."))
+    print(b.classify("It was the most pointless film I'd ever watched. Jackie Chan was so fake in his acting. The only up of the film is Chris Tucker, who is hilariously funny."))
+
+
+
+    
     pass
